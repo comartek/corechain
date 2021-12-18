@@ -1,0 +1,16 @@
+version: "3.5"
+
+services:
+  welup:
+    image: com-chain
+    ports:
+      - "16666-16669:16666-16669/tcp"
+      - "16666-16669:16666-16669/udp"
+    volumes:
+      - .:/node
+    command:
+      - --witness
+    logging:
+      options:
+        max-size: 50m
+        

@@ -1,6 +1,10 @@
 #!/bin/bash
-set -eo pipefail
-shopt -s nullglob
+source /etc/environment
 
-echo "./bin/FullNode $@" > command.txt
-exec "./bin/FullNode" "$@"
+args=''
+for i in "${@}"; do
+    args+="'$i' "
+done
+
+cd /node
+eval "java -jar $BASE_DIR/FullNode.jar -c /node/config.conf $args"
